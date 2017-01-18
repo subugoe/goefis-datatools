@@ -70,7 +70,7 @@ There are several possible settings in the configuration file.
     -   `operation` - A string manipulation which needs to be done for the
         search string is applied to the filter.
 
--   `id` - Sets which attribute will e used as ID of a possible match.
+-   `id` - Sets which attribute will be used as ID of a possible match.
 
 -   `search_attrs` - A list of attributes to return.
 
