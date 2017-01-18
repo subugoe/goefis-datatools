@@ -84,4 +84,4 @@ There are to example configurations provided:
     matches there quite low. Use this example if you need simple string
     manipulations.
 
--   l`dap-maill.yml` - This example tries to get matches from email addresses.
+-   `ldap-maill.yml` - This example tries to get matches from email addresses.
