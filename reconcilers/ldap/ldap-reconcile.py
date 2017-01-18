@@ -38,7 +38,7 @@ def evaluate_operation(operation, str):
 
 def format_results(results, query, scorebase = 100):
     def filter_entries (str):
-        if search_attrs is not None and search_attrs not in "*":
+        if search_attrs is not None and search_attrs not in ["*"]:
             return True
         if str in ["sambaSID", "objectClass", "cocom", "userServices", "platforms", "disableReason"]:
             return False
