@@ -1,0 +1,34 @@
+host: ldaps://ldap.example.org
+base: cn=admin,dc=example,dc=org
+password: password
+search_base: ou=Customers,dc=example,dc=org
+self_port: 5000
+exact_match_score: 95
+search_filter: 
+   (|(cn={0})(name={0})):
+      score: 100
+      operation:
+   (gecos={0}):
+      score: 100
+      operation:
+   (sn={0}):
+      score: 30
+      operation: split(' ')[-1]
+   (cn={0}):
+      score: 95
+      operation: replace(' ', '.').lower()
+id: uid
+search_attrs:
+   - gecos
+   - givenName
+   - uid
+   - mail
+   - sn
+   - name
+   - entryDn
+   - account
+   - mailAdresses
+   - cn
+   - id
+   - goeId
+   - employeeNumber
