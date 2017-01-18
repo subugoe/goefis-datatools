@@ -36,7 +36,7 @@ def evaluate_operation(operation, str):
     logger.debug("Result: " + r)
     return r
 
-def format_results(results, query, scorebase = 100):
+def format_results(results, query, score):
     def filter_entries (str):
         if search_attrs is not None and search_attrs not in ["*"]:
             return True
@@ -64,7 +64,6 @@ def format_results(results, query, scorebase = 100):
                 (dn, attrs) = item
                 logger.debug("Got match in DN: " + dn)
                 match = {}
-                score = scorebase / len(results)
                 if (attrs.has_key('name')):
                     name = attrs['name'][0]
                 elif (attrs.has_key('gecos')):
