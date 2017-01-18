@@ -1,7 +1,7 @@
 LDAP
 ====
 
-This reconciler for [OpenRefine] can match given strings agains a LDAP
+This reconciler for [OpenRefine](http://openrefine.org/) can match given strings agains a LDAP
 directory.
 
 Requirements
