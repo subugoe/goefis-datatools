@@ -1,5 +1,5 @@
-#! env python
-#Taken from https://github.com/dergachev/redmine-reconcile
+#!env python
+# Taken from https://github.com/dergachev/redmine-reconcile
 """
 See http://code.google.com/p/google-refine/wiki/ReconciliationServiceApi.
 See https://github.com/mikejs/reconcile-demo
@@ -62,6 +62,7 @@ def format_results(results, query, scorebase = 100):
         if type(results) == list:
             for item in results:
                 (dn, attrs) = item
+                logger.debug("Got match in DN: " + dn)
                 match = {}
                 score = scorebase / len(results)
                 if (attrs.has_key('name')):
@@ -116,6 +117,11 @@ def search(query):
     matches = []
     for filter in filters.keys():
     	score = filters[filter]['score']
+    	if filters[filter].has_key('devide_by_matches') and filters[filter]['devide_by_matches'] is not None:
+    	    devide_by_matches = filters[filter]['devide_by_matches']
+    	else:
+    	    devide_by_matches = False
+    	
     	if (filters[filter]['operation'] is not None and filters[filter]['operation'] != ''):
     	    logger.debug("Got filter " + filter + " with operation " + filters[filter]['operation'] + " and score " + str(filters[filter]['score']))
     	    modified_query = evaluate_operation(filters[filter]['operation'], query)
@@ -127,6 +133,8 @@ def search(query):
         results = ldap_search(con, base, scope, search, attrs)
     
         if (len(results) > 0):
+            if devide_by_matches:
+                score = score / len(results)
             matches.extend(format_results(results, query, score))
         else:
             matches.append({
