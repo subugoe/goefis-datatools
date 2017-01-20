@@ -7,7 +7,7 @@ directory.
 Requirements
 ------------
 
-You need [Python](https://www.python.org/) (2.7) with the following modules
+You need [Python](https://www.python.org/) (2.7, Python 3 will not work) with the following modules
 installed. If you don’t have the modules try to install them via `pip`. If you
 don’t have `pip` try:
 
