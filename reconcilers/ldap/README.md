@@ -8,7 +8,7 @@ Requirements
 ------------
 
 You need [Python](https://www.python.org/) (2.7, Python 3 will not work) with the following modules
-installed. If you don’t have the modules try to install them via `pip`.i But is recomended that you use the packaging system of your OS (like `apt-get` on Ubuntu). If you
+installed. If you don’t have the modules try to install them via `pip`. But is recomended that you use the packaging system of your OS (like `apt-get` on Ubuntu). If you
 don’t have `pip` try:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
