@@ -36,7 +36,7 @@ def evaluate_operation(operation, str):
     logger.debug("Result: " + r)
     return r
 
-def format_results(results, query, score):
+def format_results(results, query, score, name):
     def filter_entries (str):
         if search_attrs is not None and search_attrs not in ["*"]:
             return True
@@ -64,10 +64,8 @@ def format_results(results, query, score):
                 (dn, attrs) = item
                 logger.debug("Got match in DN: " + dn)
                 match = {}
-                if (attrs.has_key('name')):
-                    name = attrs['name'][0]
-                elif (attrs.has_key('gecos')):
-                    name = attrs['gecos'][0]
+                if (attrs.has_key(name)):
+                    name = attrs[name][0]
                 else:
                     name = query
                 match.update({
@@ -120,7 +118,7 @@ def search(query):
     	    devide_by_matches = filters[filter]['devide_by_matches']
     	else:
     	    devide_by_matches = False
-    	
+
     	if (filters[filter]['operation'] is not None and filters[filter]['operation'] != ''):
     	    logger.debug("Got filter " + filter + " with operation " + filters[filter]['operation'] + " and score " + str(filters[filter]['score']))
     	    modified_query = evaluate_operation(filters[filter]['operation'], query)
@@ -128,15 +126,21 @@ def search(query):
     	else: 
             logger.debug("Got filter " + filter + " without operation and score " + str(filters[filter]['score']))
             search = filter.format(query.encode('utf-8'))
+
+    	if filters[filter].has_key('name') and filters[filter]['name'] is not None:
+    	    name = name
+    	else:
+    	    name = re.search('.*?(\w+).*', filter).group(0)
+
         logger.debug("Search filter evaluated to " + search)
         results = ldap_search(con, base, scope, search, attrs)
     
         if (len(results) > 0):
             if devide_by_matches:
                 score = score / len(results)
-            matches.extend(format_results(results, query, score))
-        else:
-            matches.append({
+            matches.extend(format_results(results, query, score, name))
+    if (len(results) == 0):
+        matches.append({
                     "id": '',
                     "name": query,
                     "score": 0,

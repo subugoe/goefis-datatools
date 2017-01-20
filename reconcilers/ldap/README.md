@@ -72,6 +72,8 @@ There are several possible settings in the configuration file.
 
     -   `devide_by_matches` - Will divide the score by the number of matches.
 
+    -   `name` - The LDAP attribute the Name is taken from.
+
 -   `id` - Sets which attribute will be used as ID of a possible match.
 
 -   `search_attrs` - A list of attributes to return.

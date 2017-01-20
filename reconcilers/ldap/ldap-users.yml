@@ -5,15 +5,23 @@ search_base: ou=Customers,dc=example,dc=org
 self_port: 5000
 exact_match_score: 95
 search_filter: 
-   (|(cn={0})(name={0})):
+   (cn={0}):
       score: 100
       operation:
+      name: cn
+   (name={0}):
+      score: 100
+      operation:
+      name: name
    (gecos={0}):
       score: 100
       operation:
+      name: gecos
    (sn={0}):
       score: 30
       operation: split(' ')[-1]
+      name: sn
+      devide_by_matches: True
    (cn={0}):
       score: 95
       operation: replace(' ', '.').lower()
