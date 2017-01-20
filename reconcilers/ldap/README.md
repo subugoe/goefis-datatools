@@ -7,7 +7,7 @@ directory.
 Requirements
 ------------
 
-You need [Python](https://www.python.org/) (\>2.7) with the following modules
+You need [Python](https://www.python.org/) (2.7) with the following modules
 installed. If you don’t have the modules try to install them via `pip`. If you
 don’t have `pip` try:
 
@@ -35,7 +35,7 @@ python ldap-reconcile.py ldap-users.yml  
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 After the service has started just add a OpenRefine reconciliation service with
-the local URL. This should be `http://localhost:5000` by default.
+the local URL. This should be `http://localhost:5000/ldap-reconcile` by default.
 
 Configuration
 -------------
