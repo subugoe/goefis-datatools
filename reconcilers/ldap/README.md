@@ -1,15 +1,16 @@
 LDAP
 ====
 
-This reconciler for [OpenRefine](http://openrefine.org/) can match given strings agains a LDAP
-directory.
+This reconciler for [OpenRefine](http://openrefine.org/) can match given strings
+agains a LDAP directory.
 
 Requirements
 ------------
 
-You need [Python](https://www.python.org/) (2.7, Python 3 will not work) with the following modules
-installed. If you don’t have the modules try to install them via `pip`. But is recomended that you use the packaging system of your OS (like `apt-get` on Ubuntu). If you
-don’t have `pip` try:
+You need [Python](https://www.python.org/) (2.7, Python 3 will not work) with
+the following modules installed. If you don’t have the modules try to install
+them via `pip`. But is recomended that you use the packaging system of your OS
+(like `apt-get` on Ubuntu). If you don’t have `pip` try:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 python -m easy_install pip
@@ -27,6 +28,8 @@ python -m easy_install pip
 Usage
 -----
 
+### Service
+
 Start the service on the command line, you need to pass a configuration file for
 each instance:
 
@@ -36,6 +39,37 @@ python ldap-reconcile.py ldap-users.yml  
 
 After the service has started just add a OpenRefine reconciliation service with
 the local URL. This should be `http://localhost:5000/ldap-reconcile` by default.
+
+### OpenRefine
+
+#### Basic usage
+
+Setup a OpenRefine Project, on the column which should the service to be applied
+to, select the title arrow (1), then „Reconcile“ (2) and then „Start
+reconciling..."
+
+![](../../documentation/images/OpenRefine-step1.png)
+
+The next step would be adding your local instance of the service to OpenRefine
+using the „Add standard service…“ button on the bottom of the page (see the next
+but one screen shot).
+
+![](../../documentation/images/OpenRefine-add.png)
+
+After the service is added you can use it, notice that takes a bit of time until
+you can start, as you might notice OpenRefine is probing the service by sending
+a few of your entries. You don’t need to make services here, just hit „Start
+Reconciling“ (1).
+
+![](../../documentation/images/OpenRefine-select.png)
+
+#### Advanced Usage
+
+Using the service it is also possible to get more data from the directory
+server, this can be done by calling the service for each cell of a given column
+and use the
+[parseJSON](https://github.com/OpenRefine/OpenRefine/wiki/GREL-Other-Functions#parsejsonstring-s)
+function from GREL.
 
 Configuration
 -------------
@@ -89,3 +123,5 @@ There are to example configurations provided:
     manipulations.
 
 -   `ldap-mail.yml` - This example tries to get matches from email addresses.
+
+ 
