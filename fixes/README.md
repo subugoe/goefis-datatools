@@ -30,7 +30,7 @@ perl -MCatmandu::CLI -e "Catmandu::CLI-\>run()" convert LDAP \\
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 
-Step 2: Convert the data using the fix
+### Step 2: Convert the data using the fix
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 catmandu convert YAML --fix ldap.fix < users.yml

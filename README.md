@@ -7,3 +7,4 @@ Tools
 -----
 
 -   `reconcilers` - Reconcilers for [OpenRefine](http://openrefine.org/)
+-   `fixes` - Fixes for [Catmandu](https://metacpan.org/pod/Catmandu)
