@@ -15,8 +15,8 @@ This fix can help to filter out unneeded attributes from a LDAP export. One
 might need this to create a LibreCat user base from an existing directory
 server. You could even apply the fix during the export process itself.
 
-Note that the examples either use ´catmandui´ or ´perl -MCatmandu::CLI -e
-"Catmandu::CLI-\>run()“´ which should both work.
+Note that the examples either use ``catmandui`` or ``perl -MCatmandu::CLI -e
+"Catmandu::CLI-\>run()“`` which should both work.
 
 
 ### Step 1: Getting the users from the directory
@@ -30,7 +30,7 @@ perl -MCatmandu::CLI -e "Catmandu::CLI-\>run()" convert LDAP \\
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 
-Step 2: Convert the data using the fix
+### Step 2: Convert the data using the fix
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 catmandu convert YAML --fix ldap.fix < users.yml
