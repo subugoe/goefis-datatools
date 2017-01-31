@@ -40,7 +40,7 @@ COPY dumps $DATA_DIR/dumps
 COPY scripts $DATA_DIR/scripts
 
 COPY populate.sh .
-RUN chmod +x populate.sh && ./populate.sh
+RUN $HIVE_HOME/bin/schematool -dbType derby -initSchema && chmod +x populate.sh && ./populate.sh
 
 # Clean up
 WORKDIR /opt

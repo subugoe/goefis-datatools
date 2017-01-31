@@ -1,6 +1,13 @@
 Database tool
 =============
 
+This is a docker container which can be used as a starting point to collect
+various tables or even whole databases. It is based on the works of [Big Data
+Europe](http://www.big-data-europe.eu/), which is available on
+[GitHub](https://github.com/big-data-europe/docker-hive).
+
+ 
+
 What ist does
 -------------
 
