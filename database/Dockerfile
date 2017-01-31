@@ -29,7 +29,10 @@ RUN mvn org.apache.maven.plugins:maven-dependency-plugin:2.4:get \
     -Ddest=$SQOOP_SERVER_EXTRA_LIB/mysql-connector-java.jar && \
     mvn org.apache.maven.plugins:maven-dependency-plugin:2.4:get \
     -DrepoUrl=http://repo1.maven.org/maven2 \
-    -Dartifact=org.hsqldb:hsqldb:2.3.4 -Ddest=$SQOOP_SERVER_EXTRA_LIB/hsqldb.jar
+    -Dartifact=org.hsqldb:hsqldb:2.3.4 -Ddest=$SQOOP_SERVER_EXTRA_LIB/hsqldb.jar && \
+    mvn org.apache.maven.plugins:maven-dependency-plugin:2.4:get \
+    -DrepoUrl=http://repo1.maven.org/maven2 \
+    -Dartifact=net.sourceforge.jtds:jtds:1.3.1 -Ddest=$SQOOP_SERVER_EXTRA_LIB/jdts.jar && \  
 
 # Create needed directories, copy files and execute script
 RUN mkdir $DATA_DIR/dumps && mkdir $DATA_DIR/scripts
@@ -46,3 +49,9 @@ RUN rm -rf sqoop* /root/.m2
 RUN apt-get --purge remove -y $REQ_BUILD && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
+
+EXPOSE 10000
+EXPOSE 10002
+
+ENTRYPOINT ["entrypoint.sh"]
+CMD startup.sh
