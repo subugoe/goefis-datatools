@@ -21,12 +21,12 @@ Note that the examples either use ``catmandui`` or ``perl -MCatmandu::CLI -e
 
 ### Step 1: Getting the users from the directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-perl -MCatmandu::CLI -e "Catmandu::CLI-\>run()" convert LDAP \\  
-     --host "ldaps://ldaps.ugent.be:636" --password \*\*\*\*\*  \\  
-     --search_filter \\(objectClass=GWDGuser\\) \\  
-     --search_base 'ou=people,dc=ugent,dc=be' \\  
-     --base ugentID=XXXXXXX,XXXXX,dc=ugent,dc=be \\  
-     --search_filter '(objectclass=iNetOrgPerson)"' to YAML \> users.yml
+perl -MCatmandu::CLI -e "Catmandu::CLI-\>run()" convert LDAP \  
+     --host "ldaps://ldaps.ugent.be:636" --password *****  \  
+     --search_filter \(objectClass=GWDGuser\) \  
+     --search_base 'ou=people,dc=ugent,dc=be' \  
+     --base ugentID=XXXXXXX,XXXXX,dc=ugent,dc=be \  
+     --search_filter '(objectclass=iNetOrgPerson)"' to YAML > users.yml
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 
