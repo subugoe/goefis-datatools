@@ -28,3 +28,14 @@ curl -v -D --header "Content-type: application/json" \
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you use `-D`you can see the HTTP headers and check for cache hits and misses.
+
+Advanced Usage
+--------------
+
+You can even use Docker to have the whole cache in memory, by setting the cache
+path (`/www/cache`) as a `tmpfs` file system.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+docker run -p 8085:8085 --tmpfs /www/cache:rw,size=256m,mode=1777 csl-nginx
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
