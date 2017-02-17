@@ -78,8 +78,10 @@ end
 remove_field(lastModified)
 #Try to deal with those later
 remove_field(disableReason)
+remove_field(disableDate)
 remove_field(expirationDate)
 remove_field(userType)
+remove_field(cn)
 set_array(emails)
 set_hash(ids) 
 if is_array(mailAddresses)
