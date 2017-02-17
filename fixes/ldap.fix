@@ -3,6 +3,7 @@ if is_array(uid)
 else
     copy_field(uid, login)
 end
+remove_field(uid)
 add_field("account_type","local")
 add_field("account_status","active")
 if is_array(givenName)
@@ -10,20 +11,29 @@ if is_array(givenName)
 else
     copy_field(givenName, first_name)
 end
+remove_field(givenName)
 if is_array(sn)
     copy_field(sn.0, last_name)
 else
     copy_field(sn, last_name)
 end
+remove_field(sn)
+if is_array(title)
+    copy_field(title.0, last_name)
+else
+    copy_field(title, last_name)
+end
+remove_field(title)
 if is_array(gecos)
     copy_field(gecos.0, full_name)
 else
     copy_field(gecos, full_name)
 end
+remove_field(gecos)
+copy_field(mail, email)
+remove_field(mail)
 remove_field("o")
 remove_field("objectClass")
-remove_field("mail")
-remove_field("mailAdresses")
 remove_field("mailHost")
 remove_field("mailboxServer")
 remove_field("altHomeDirectory")
@@ -50,3 +60,45 @@ remove_field("tmpDisableDate")
 remove_field("initialLoginShell")
 remove_field("goesternQuellSystem")
 remove_field("exchangeUserDomain")
+remove_field(dialinStatus)
+if is_array(insertDate)
+    copy_field(insertDate.0, date_created)
+else
+    copy_field(insertDate, date_created)
+end
+remove_field(insertDate)
+if is_array(lastModified)
+    copy_field(lastModified.0, date_updated)
+else
+    copy_field(lastModified, date_updated)
+end
+remove_field(lastModified)
+#Try to deal with those later
+remove_field(disableReason)
+remove_field(expirationDate)
+remove_field(userType)
+set_array(emails)
+set_array(ids) 
+if is_array(mailAddresses)
+    do list(path: mailAddresses, var:e)
+        copy_field(e, emails.$append)
+    end
+end
+remove_field(mailAddresses)
+if is_array(externalEmailAddress)
+    do list(path: externalEmailAddress, var:e)
+        copy_field(e, emails.$append)
+    end
+end
+if is_array(goeId)
+    copy_field(goeId.0, ids.$append)
+else
+    copy_field(goeId, ids.$append)
+end
+remove_field(goeId)
+if is_array(employeeNumber)
+    copy_field(employeeNumber.0, ids.$append)
+else
+    copy_field(employeeNumber, ids.$append)
+end
+remove_field(employeeNumber)
