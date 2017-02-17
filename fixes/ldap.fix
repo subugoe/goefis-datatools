@@ -1,24 +1,24 @@
 if is_array(uid)
-    copy_field("uid","login.1")
+    copy_field(uid.0, login)
 else
-    copy_field("uid","login")
+    copy_field(uid, login)
 end
 add_field("account_type","local")
 add_field("account_status","active")
 if is_array(givenName)
-    copy_field("givenName","first_name.1")
+    copy_field(givenName.0, first_name)
 else
-    copy_field("givenName","first_name")
+    copy_field(givenName, first_name)
 end
 if is_array(sn)
-    copy_field("sn","last_name.1")
+    copy_field(sn.0, last_name)
 else
-    copy_field("sn","last_name")
+    copy_field(sn, last_name)
 end
 if is_array(gecos)
-    copy_field("gecos","full_name.1")
+    copy_field(gecos.0, full_name)
 else
-    copy_field("gecos","full_name")
+    copy_field(gecos, full_name)
 end
 remove_field("o")
 remove_field("objectClass")
