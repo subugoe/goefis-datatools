@@ -19,18 +19,21 @@ else
 end
 remove_field(sn)
 if is_array(title)
-    copy_field(title.0, last_name)
+    copy_field(title.0, title)
 else
-    copy_field(title, last_name)
+    copy_field(title, title)
 end
-remove_field(title)
 if is_array(gecos)
     copy_field(gecos.0, full_name)
 else
     copy_field(gecos, full_name)
 end
 remove_field(gecos)
-copy_field(mail, email)
+if is_array(mail)
+    copy_field(mail.0, email)
+else
+    copy_field(mail, email)
+end
 remove_field(mail)
 remove_field("o")
 remove_field("objectClass")
@@ -78,7 +81,7 @@ remove_field(disableReason)
 remove_field(expirationDate)
 remove_field(userType)
 set_array(emails)
-set_array(ids) 
+set_hash(ids) 
 if is_array(mailAddresses)
     do list(path: mailAddresses, var:e)
         copy_field(e, emails.$append)
@@ -90,15 +93,16 @@ if is_array(externalEmailAddress)
         copy_field(e, emails.$append)
     end
 end
+remove_field(externalEmailAddress)
 if is_array(goeId)
-    copy_field(goeId.0, ids.$append)
+    copy_field(goeId.0, ids.goeid)
 else
-    copy_field(goeId, ids.$append)
+    copy_field(goeId, ids.goeid)
 end
 remove_field(goeId)
 if is_array(employeeNumber)
-    copy_field(employeeNumber.0, ids.$append)
+    copy_field(employeeNumber.0, ids.employeenumber)
 else
-    copy_field(employeeNumber, ids.$append)
+    copy_field(employeeNumber, ids.employeenumber)
 end
 remove_field(employeeNumber)
