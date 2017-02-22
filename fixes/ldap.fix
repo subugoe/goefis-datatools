@@ -63,18 +63,23 @@ remove_field("tmpDisableDate")
 remove_field("initialLoginShell")
 remove_field("goesternQuellSystem")
 remove_field("exchangeUserDomain")
+remove_field("cn")
 remove_field(dialinStatus)
+# Use something like `date -d 20070309 +"%Y-%m-%dT%H:%M:%SZ"`
 if is_array(insertDate)
     copy_field(insertDate.0, date_created)
 else
     copy_field(insertDate, date_created)
 end
 remove_field(insertDate)
+datetime_format(date_created,destination_pattern:"%Y-%m-%dT%H:%M:%SZ")
+# Use something like `date -d @1173445381 +"%Y-%m-%dT%H:%M:%SZ"`
 if is_array(lastModified)
     copy_field(lastModified.0, date_updated)
 else
     copy_field(lastModified, date_updated)
 end
+datetime_format(date_updated,destination_pattern:"%Y-%m-%dT%H:%M:%SZ")
 remove_field(lastModified)
 #Try to deal with those later
 remove_field(disableReason)
