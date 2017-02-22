@@ -72,7 +72,7 @@ else
     copy_field(insertDate, date_created)
 end
 remove_field(insertDate)
-datetime_format(date_created,destination_pattern:"%Y-%m-%dT%H:%M:%SZ")
+datetime_format(date_created,source_pattern:"%Y%m%d", destination_pattern:"%Y-%m-%dT%H:%M:%SZ")
 # Use something like `date -d @1173445381 +"%Y-%m-%dT%H:%M:%SZ"`
 if is_array(lastModified)
     copy_field(lastModified.0, date_updated)
