@@ -1,13 +1,26 @@
 #!env python
+# vim: set fileencoding=UTF8 :
 # Taken from https://github.com/dergachev/redmine-reconcile
 """
 See http://code.google.com/p/google-refine/wiki/ReconciliationServiceApi.
 See https://github.com/mikejs/reconcile-demo
 """
 import re, yaml, ldap, sys, logging
+import __builtin__
 
 from flask import Flask, request, jsonify, json
 app = Flask(__name__)
+
+class string_tricks(str):
+    def replace_umlauts (self):
+        chars = {'ö': 'oe','ä': 'ae','ü': 'ue', 'ß': 'ss'} 
+        for char in chars:
+            self = self.replace(char,chars[char])
+        return str
+        
+# Add methods, that you want to use in the configuration YAML file as operations here.
+
+__builtin__.str = string_tricks
 
 def ldap_search (con, base, scope, filter, attrs):
     logger.debug('Searching for ' + filter + ' in ' + base)
