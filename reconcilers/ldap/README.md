@@ -63,6 +63,15 @@ Reconciling“ (1).
 
 ![](../../documentation/images/OpenRefine-select.png)
 
+The next step would be adding a ne column based on the reconciled one. This way
+it is possible to get the `id` of an entry. You can use the following GREL
+expression. The possible expressions are
+[documented](https://github.com/OpenRefine/OpenRefine/wiki/Variables#recon).
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cell.recon.candidates[0].id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 #### Advanced Usage
 
 Using the service it is also possible to get more data from the directory
