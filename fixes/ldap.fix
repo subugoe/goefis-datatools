@@ -113,3 +113,4 @@ else
     copy_field(employeeNumber, ids.employeenumber)
 end
 remove_field(employeeNumber)
+copy_field(login, _id)
