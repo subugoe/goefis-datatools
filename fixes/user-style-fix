@@ -1,0 +1,3 @@
+unless exists('style')
+    add_field('style', 'ieee')
+end
