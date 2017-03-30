@@ -1,0 +1,7 @@
+unless exists ('title')
+    unless exist ('type')
+        if all_equal('status','deleted')
+            reject()
+        en
+    end
+end
