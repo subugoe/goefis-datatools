@@ -1,3 +1,6 @@
 unless exists('style')
     add_field('style', 'ieee')
 end
+if any_match('style', 'short')
+    set_field('style', 'ieee')
+end
