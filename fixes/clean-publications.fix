@@ -5,3 +5,6 @@ unless exists ('title')
         en
     end
 end
+if is_number(year)
+    capitalize(year)
+end
